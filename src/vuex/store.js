@@ -4,7 +4,7 @@ import md5 from 'js-md5'
 
 Vue.use(Vuex)
 
-const api = 'http://acm-api.newitd.com'
+const api = 'https://acmreg-api.zuccacm.top'
 
 const USER_NULL = {
   username: '登录/注册',
