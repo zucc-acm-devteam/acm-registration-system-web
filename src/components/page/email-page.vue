@@ -153,7 +153,7 @@ export default {
       })
     },
     hasNotMail () {
-      this.$alert('需要验证学生邮箱以确认身份<br/>新生学生邮箱的密码请向班主任/学工办老师询问', '学生邮箱', {
+      this.$alert('需要验证学生邮箱以确认身份<br/>新生学生邮箱的密码请向班主任/学工办老师询问<br/>一般默认为ZUCC+身份证后六位', '学生邮箱', {
         confirmButtonText: '确定',
         dangerouslyUseHTMLString: true
       })
