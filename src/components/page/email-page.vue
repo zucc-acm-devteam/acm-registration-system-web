@@ -1,43 +1,47 @@
 <template>
-    <div>
-        <el-card class="box-card" shadow="hover">
-            <div class="imgBox">
-                <img src="@/assets/acm.png" alt="" width="100%">
+  <div>
+    <el-card class="box-card" shadow="hover">
+      <div class="imgBox">
+        <img src="@/assets/acm.png" alt="" width="100%">
+      </div>
+      <div class="page-title">
+        <b>激活账号</b>
+      </div>
+      <el-divider><i class="el-icon-message"></i></el-divider>
+      <div class="form-box">
+        <el-form :model="FormData" :rules="rules" ref="FormData" class="demo-ruleForm">
+          <el-form-item prop="email">
+            <el-input
+              v-model="FormData.email"
+              placeholder="邮箱"
+              disabled
+              prefix-icon="el-icon-message"
+              style="width: 208px;font-size: 13px">
+            </el-input>
+            <el-button style="float: right;width: 70px" @click="sendEmail" :disabled="this.countDown !== 0">
+              {{ this.countDown === 0 ? '发送' : this.countDown }}
+            </el-button>
+          </el-form-item>
+          <el-form-item prop="code">
+            <el-input type="code"
+                      v-model="FormData.code"
+                      placeholder="验证码"
+                      prefix-icon="el-icon-mouse"
+                      @keyup.enter.native="submitForm('FormData')">
+            </el-input>
+          </el-form-item>
+          <el-form-item>
+            <div class="submitBox">
+              <el-button class="submitButton" type="primary" @click="submitForm('FormData')">激活账号</el-button>
+              <el-link type="info" :underline="false" style="width: 100%; text-align: center; font-size: 10px"
+                       @click="hasNotMail">&nbsp;关于学生邮箱，点我
+              </el-link>
             </div>
-            <div class="page-title">
-                <b>激活账号</b>
-            </div>
-            <el-divider><i class="el-icon-message"></i></el-divider>
-            <div class="form-box">
-                <el-form :model="FormData" :rules="rules" ref="FormData" class="demo-ruleForm">
-                    <el-form-item prop="email">
-                        <el-input
-                                v-model="FormData.email"
-                                placeholder="邮箱"
-                                disabled
-                                prefix-icon="el-icon-message"
-                                style="width: 208px;font-size: 13px">
-                        </el-input>
-                        <el-button style="float: right;width: 70px" @click="sendEmail" :disabled="this.countDown !== 0">{{ this.countDown===0?'发送':this.countDown }}</el-button>
-                    </el-form-item>
-                    <el-form-item prop="code">
-                        <el-input type="code"
-                                  v-model="FormData.code"
-                                  placeholder="验证码"
-                                  prefix-icon="el-icon-mouse"
-                                  @keyup.enter.native="submitForm('FormData')">
-                        </el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <div class="submitBox">
-                            <el-button class="submitButton" type="primary" @click="submitForm('FormData')">激活账号</el-button>
-                            <el-link type="info" :underline="false" style="width: 100%; text-align: center; font-size: 10px" @click="hasNotMail">&nbsp;不知道学生邮箱密码?</el-link>
-                        </div>
-                    </el-form-item>
-                </el-form>
-            </div>
-        </el-card>
-    </div>
+          </el-form-item>
+        </el-form>
+      </div>
+    </el-card>
+  </div>
 </template>
 
 <script>
@@ -52,8 +56,8 @@ export default {
         code: ''
       },
       rules: {
-        email: [{ required: true, message: '请输入邮箱地址!', trigger: 'blur' }],
-        code: [{ required: true, message: '请输入验证码!', trigger: 'blur' }]
+        email: [{required: true, message: '请输入邮箱地址!', trigger: 'blur'}],
+        code: [{required: true, message: '请输入验证码!', trigger: 'blur'}]
       }
     }
   },
@@ -153,7 +157,11 @@ export default {
       })
     },
     hasNotMail () {
-      this.$alert('需要验证学生邮箱以确认身份<br/>新生学生邮箱的密码请向班主任/学工办老师询问<br/>一般默认为ZUCC+身份证后六位', '学生邮箱', {
+      this.$alert('需要验证学生邮箱以确认身份' +
+        '<br/>学生邮箱地址为' +
+        '<a href="http://webmail.zucc.edu.cn" target="_blank">webmail.zucc.edu.cn</a>' +
+        '<br/>新生学生邮箱的密码请向班主任/学工办老师询问' +
+        '<br/>一般默认为ZUCC+身份证后六位', '学生邮箱', {
         confirmButtonText: '确定',
         dangerouslyUseHTMLString: true
       })
@@ -166,38 +174,43 @@ export default {
 </script>
 
 <style scoped>
-    .box-card{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 400px;
-    }
-    .imgBox{
-        position: absolute;
-        margin-top: 10px;
-        left: 50%;
-        transform: translate(-50%,0);
-    }
-    .form-box{
-        width: 80%;
-        float: left;
-        transform: translate(12%,0);
-    }
-    .page-title{
-        width: 100%;
-        margin-top: 150px;
-        margin-bottom: 20px;
-        text-align: center;
-        font-size: 25px;
-    }
-    .submitBox{
-        width: 100%;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-    .submitButton{
-        width: 100%;
-        height: auto;
-    }
+.box-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+}
+
+.imgBox {
+  position: absolute;
+  margin-top: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.form-box {
+  width: 80%;
+  float: left;
+  transform: translate(12%, 0);
+}
+
+.page-title {
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.submitBox {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.submitButton {
+  width: 100%;
+  height: auto;
+}
 </style>
