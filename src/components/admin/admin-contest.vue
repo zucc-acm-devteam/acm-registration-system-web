@@ -124,8 +124,6 @@ export default {
         })
     },
     saveChangeSure (row, row2) {
-      console.log(row)
-      console.log(row2)
       const that = this
       const auth = that.$store.state.auth()
 

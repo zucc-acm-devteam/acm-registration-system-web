@@ -162,7 +162,6 @@ export default {
         })
     },
     openEditBox (x, y) {
-      console.log(x + ' ' + y)
       const tmp = JSON.parse(this.tableData[x][y].content)
       this.editData.title = tmp.title
       this.editData.text = tmp.text
@@ -237,7 +236,6 @@ export default {
       that.loading = true
       that.$http.get(that.$store.state.api + '/v1/announcement/?contest_id=' + contest.id, auth)
         .then(data => {
-          console.log(data.data.data.res.data)
           that.tableData = [[], [], []]
           var tmp = data.data.data.res.data
           for (var item of tmp) {

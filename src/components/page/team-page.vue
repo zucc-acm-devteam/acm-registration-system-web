@@ -236,7 +236,6 @@ export default {
         .then(data => {
           const tmp = data.data.data.res
           that.teamMember = tmp.data
-          console.log(tmp)
         })
         .catch(function (error) {
           if (error.response) {
@@ -368,7 +367,6 @@ export default {
             that.relationId = tmp.data[0].id
             that.refreshTeamData()
           }
-          console.log(data.data)
         })
         .catch(function (error) {
           if (error.response) {

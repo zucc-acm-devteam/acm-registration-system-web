@@ -58,12 +58,10 @@ var mutations = {
 
     that.$http.put(that.$store.state.api + '/v1/token', {}, auth)
       .then(data => {
-        console.log(data.data.data.token)
         that.$store.commit('updateToken', data.data.data.token)
         auth = state.auth()
         that.$http.get(that.$store.state.api + '/v1/token', auth)
           .then(data => {
-            console.log(data.data.data.user)
             state.user = data.data.data.user
             state.userIsUpdated = true
             if (isLogin) {
@@ -120,7 +118,6 @@ var mutations = {
           state.contest = CONTEST_NULL
         } else {
           state.contest = data.data.data.res.data[0]
-          console.log(state.contest)
         }
       })
       .catch(function (error) {

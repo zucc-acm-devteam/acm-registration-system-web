@@ -134,7 +134,6 @@ export default {
       that.$http.get(that.$store.state.api + '/v1/user/' + that.FormData.sid, auth)
         .then(data => {
           const user = data.data.data.user
-          console.log(user)
           that.FormData.name = user.nickname ? user.nickname : ''
           that.FormData.sex = user.gender ? (user.gender === 1 ? '男' : '女') : ''
           that.FormData.college = user.college ? user.college : ''
@@ -198,7 +197,6 @@ export default {
         if (valid) {
           this.putData()
         } else {
-          console.log('error submit!!')
           return false
         }
       })

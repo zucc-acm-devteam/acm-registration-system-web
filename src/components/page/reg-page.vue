@@ -81,7 +81,6 @@ export default {
       const that = this
       that.$http.post(that.$store.state.api + '/v1/captcha/image/' + this.captchaUuid, {code: value})
         .then(data => {
-          console.log(data.data)
           callback()
         })
         .catch(function (error) {

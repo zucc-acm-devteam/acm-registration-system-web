@@ -143,7 +143,6 @@ export default {
             })
           }
           that.getMember()
-          console.log(that.listData)
         })
         .catch(function (error) {
           if (error.response) {
