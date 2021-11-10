@@ -52,7 +52,6 @@ export default {
         padding: 0;
         margin: 0;
         border: 0;
-        text-decoration: none;
         list-style-type: none;
     }
     #app{
