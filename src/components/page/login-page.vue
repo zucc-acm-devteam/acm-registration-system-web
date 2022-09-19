@@ -91,7 +91,7 @@ export default {
       })
     },
     forgetPwd () {
-      this.$alert('请使用本人的学生邮箱向管理员发送邮件以找回密码 <br/> 管理员邮箱: <b>31801054@stu.zucc.edu.cn<b/>', '找回密码', {
+      this.$alert('请使用本人的学生邮箱向管理员发送邮件以找回密码 <br/> 管理员邮箱: <b>32001267@stu.zucc.edu.cn<b/>', '找回密码', {
         confirmButtonText: '确定',
         dangerouslyUseHTMLString: true
       })
